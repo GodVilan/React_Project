@@ -1,49 +1,65 @@
-import { useEffect, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import ComponentOne from "./ComponentOne";
+import { useState } from 'react'
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/InputGroup';
+
 
 function App() {
-
-  let numberOne  = 0;
-  const [number, setNumber] = useState(0);
-  const [person, setPerson] = useState({
-    name: "Srikanth Reddy",
-    age: 21
-  })
-
-  const [numberList, setNumberList] = useState([0])
-
-  const increaseCount = () => {
-    setNumber(number + 1);
-  }
-
-  const changeName = () => {
-    setPerson(previousValue => {
-      return {...previousValue, name: "Havish Reddy"}
-    })
-  }
-
-  const addValue = () => {
-    setNumber(number+1);
-    setNumberList(previousValue => {
-      return [...previousValue, number]
-    })
-  }
-
-  useEffect(() => {
-    console.log("This component has mounted.")
-  
-    
-    
-  }, [])
+  const [count, setCount] = useState(0)
 
   return (
-    <div>
-      <h1>Hello World</h1>
-      <div>The name is {person.name} and age {person.age}</div>
-      <div> This List contains {JSON.stringify(numberList)}</div>
-      <button onClick = {addValue}>Click to increase count {number} </button>
-      <ComponentOne />
+    <div className="App">
+       <Navbar bg="light" variant="light">
+        <Container>
+          <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+          <Nav className="me-auto">
+          <Button variant="primary"><i class="fas fa-moon fa-lg fa-fw"></i></Button>{' '}
+
+          </Nav>
+        </Container>
+      </Navbar>
+      <h1 className="text-center">My TODOS </h1>
+      <div style={{
+    display: "flex",
+    alignItems : "center",
+    justifyContent :"center"
+}}> 
+
+
+
+      <InputGroup style={{width:"300px"}} className="mb-3">
+        <Form.Control
+          placeholder="Recipient's username"
+          aria-label="Recipient's username"
+          aria-describedby="basic-addon2"
+        />
+        <Button variant="outline-success" id="button-addon2">
+        <i class="fa fa-add"></i>
+        </Button>
+      </InputGroup>
+      </div>
+      <div className="mt-4">
+                <Nav justify variant="tabs" defaultActiveKey="?list=BLIND75">
+                    <Nav.Item >
+                        <Nav.Link eventKey="?list=BLIND75">
+                            <span className="tab-font">Todos</span>
+                        </Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item >
+                        <Nav.Link eventKey="link-1">
+                            <span className="tab-font">Completed</span>
+                        </Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                        <Nav.Link eventKey="link-2">
+                            <span className="tab-font">Deleted</span>
+                        </Nav.Link>
+                    </Nav.Item>
+                </Nav>
+            </div>
     </div>
   )
 }
