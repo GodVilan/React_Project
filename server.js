@@ -2,7 +2,7 @@
 
 // import dotenv from "dotenv";
 // dotenv.config();
-
+import cors from "cors";
 import { config } from "dotenv";
 config();
 
@@ -23,6 +23,7 @@ const options = {
 	index:['index.html'],
 }
 
+app.use(cors());
 app.use(express.static("frontend"));
 app.use(express.json());
 
